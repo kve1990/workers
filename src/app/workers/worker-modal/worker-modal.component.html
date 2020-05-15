@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>{{ isCreated ? 'Добавить нового сотрудника' : 'Редактирование сотрудника'}}</h1>
+
+<div mat-dialog-content>
+  <div class="modal-container" [formGroup]="workerControl">
+
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="firstName">
+      <mat-error *ngIf="workerControl.controls['firstName'].invalid && workerControl.controls['firstName'].touched">
+        Не указано имя
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input type="text" matInput formControlName="lastName">
+      <mat-error *ngIf="workerControl.controls['lastName'].invalid && workerControl.controls['lastName'].touched">
+        Не указана фамилия
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Отчество</mat-label>
+      <input type="text" matInput formControlName="middleName">
+      <mat-error *ngIf="workerControl.controls['middleName'].invalid && workerControl.controls['middleName'].touched">
+        Не указано отчество
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Телефон</mat-label>
+      <span matPrefix>+7 &nbsp;</span>
+      <input type="tel" matInput formControlName="phone">
+      <mat-error *ngIf="workerControl.controls['phone'].invalid && workerControl.controls['phone'].touched">
+        Укажите валидный номер телефона
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email">
+      <mat-error *ngIf="workerControl.controls['email'].invalid && workerControl.controls['email'].touched">
+        Укажите валидный email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Дата добавления сотрудника</mat-label>
+      <input (keydown)="onKeyDown($event)" matInput formControlName="date" [matDatepicker]="picker" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="workerControl.controls['date'].invalid && workerControl.controls['date'].touched">
+        Укажите дату добавления сотрудника
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-stroked-button color="accent" mat-dialog-close>Отмена</button>
+  <button mat-stroked-button color="primary" (click)="close()" cdkFocusInitial [disabled]="workerControl.invalid">Сохранить</button>
+</div>

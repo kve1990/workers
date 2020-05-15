@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "workers-64a43": {
+      "hosting": {
+        "workers": [
+          "workers-64a43"
+        ]
+      }
+    }
+  }
+}

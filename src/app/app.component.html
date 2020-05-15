@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <mat-icon *ngIf="isRoleExist" class="icon" (click)="logout()" aria-hidden="false">input</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

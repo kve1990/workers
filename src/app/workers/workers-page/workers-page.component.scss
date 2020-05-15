@@ -1,0 +1,22 @@
+.grid-container {
+	display: grid;
+	padding: 50px 40px 20px 40px; 
+	grid-template-columns: 1fr;
+	grid-gap: 15px 30px;
+}
+
+tr.mat-row {
+	&:hover {
+		background: whitesmoke;
+	}
+}
+
+.add {
+	position: absolute;
+	right: 100px;
+	top: 30px;
+}
+
+.action {
+	width: 80px;;
+}

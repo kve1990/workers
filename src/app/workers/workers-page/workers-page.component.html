@@ -1,0 +1,45 @@
+<button *ngIf="role === 'admin'" mat-fab color="accent" class="add" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div class="grid-container">
+  <table mat-table [dataSource]="workers$" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> ФИО </th>
+      <td mat-cell *matCellDef="let worker"> {{worker?.lastName}} {{worker?.firstName}} {{worker?.middleName}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Телефон </th>
+      <td mat-cell *matCellDef="let worker"> +7 {{worker?.phone}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let worker"> {{worker?.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Дата добавления </th>
+      <td mat-cell *matCellDef="let worker"> {{worker?.date | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="action"> </th>
+      <td mat-cell *matCellDef="let worker" class="action">
+        <button mat-icon-button (click)="openDialog(worker)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="remove(worker)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
+
